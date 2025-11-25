@@ -1,0 +1,32 @@
+---
+# defaults for omero_zarr_pixel_buffer
+
+# omero_zarr_pixel_buffer_user, the defaults is OMERO.server user
+omero_zarr_pixel_buffer_user: "omero-server"
+
+# Installation folder, the default it OMERO.server's lib directory
+omero_zarr_pixel_buffer_folder: "/opt/omero/server/OMERO.server/lib/server"
+
+## Jars
+zarrpixelbuffer_jars:
+  - name: omero-zarr-pixel-buffer
+    group: com/glencoesoftware/omero
+    version: "0.6.1"
+
+zarrpixelbuffer_dep_jars:
+  - name: caffeine
+    group: com/github/ben-manes/caffeine
+    version: "3.1.8"
+  - name: jzarr
+    group: dev/zarr
+    version: "0.4.2"
+  - name: s3fs
+    group: org/lasersonlab
+    version: "2.2.3"
+  - name: aws-java-sdk-s3
+    group: com/amazonaws
+    version: "1.12.659"
+
+## Artifactory URLs
+glencoe_artifactory_baseurl: "https://artifacts.glencoesoftware.com/artifactory/gs-omero-snapshots-local"
+maven_artifactory_url: "https://repo1.maven.org/maven2"
