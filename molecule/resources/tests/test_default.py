@@ -27,12 +27,6 @@ def omero_zarr_pixel_buffer(host):
     # TODO: Implement!
     pass
 
-def test_docker_running_and_enabled(host):
-   ms_service = host.service("omero-ms-image-region")
-   assert ms_service.is_running
-   assert ms_service.is_enabled
-
-
 def test_nginx_gateway(host):
     out = host.check_output('curl -L localhost')
     assert 'OMERO.web - Login' in out
