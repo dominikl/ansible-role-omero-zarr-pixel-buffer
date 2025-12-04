@@ -1,0 +1,33 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+  - role: ome.redis
+  - role: ome.postgresql
+    postgresql_version: "16"
+    postgresql_databases:
+        - name: omero
+          owner: omero
+    postgresql_users:
+      - user: omero
+        password: omero
+        databases: [ omero ]
+
+  - role: ome.java
+    java_versions: 11
+
+  - role: ome.omero_server
+    omero_server_release: 5.6.16
+    postgresql_version: "16"
+
+  - role: ome.omero_web
+    omero_web_setup_redis_session: true
+    omero_web_always_reset_config: false
+    omero_web_config_set:
+       "omero.web.caches":
+         "default":
+           "BACKEND": "django_redis.cache.RedisCache"
+           "LOCATION": "redis://127.0.0.1:6379/0"
+       "omero.web.session_engine": "django.contrib.sessions.backends.cache"
+
+  - role: ome.omero_zarr_pixel_buffer

@@ -8,10 +8,10 @@ omero_zarr_pixel_buffer_user: "omero-server"
 omero_zarr_pixel_buffer_folder: "/opt/omero/server/OMERO.server/lib/server"
 
 ## Jars
-zarrpixelbuffer_jars:
-  - name: omero-zarr-pixel-buffer
-    group: com/glencoesoftware/omero
-    version: "0.6.1"
+zarrpixelbuffer_jar:
+  name: omero-zarr-pixel-buffer
+  group: com/glencoesoftware/omero
+  version: "0.6.1"
 
 zarrpixelbuffer_dep_jars:
   - name: caffeine

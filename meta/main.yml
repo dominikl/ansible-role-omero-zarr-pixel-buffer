@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  author: ome-devel@lists.openmicroscopy.org.uk
+  description: Install OMERO Zarr Pixelbuffer into existing OMERO.server
+  company: Open Microscopy Environment
+  license: BSD
+  min_ansible_version: 2.11
+  platforms:
+    - name: EL
+      versions:
+        - 9
+    - name: Ubuntu
+      versions:
+        - jammy
+  namespace: ome
+  role_name: omero_zarr_pixel_buffer
+  galaxy_tags: ['omero', 'omero_zarr_pixel_buffer']

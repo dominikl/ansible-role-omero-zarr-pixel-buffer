@@ -2,10 +2,9 @@
 - name: omero-zarr-pixel-buffer | Install jar
   become: true
   get_url:
-    url: "{{ glencoe_artifactory_baseurl }}/{{ item.group }}/{{ item.name }}/{{ item.version }}/{{ item.name }}-{{ item.version }}.jar"
-    dest: "{{ omero_zarr_pixel_buffer_folder }}/{{ item.name }}.jar"
+    url: "{{ glencoe_artifactory_baseurl }}/{{ zarrpixelbuffer_jar.group }}/{{ zarrpixelbuffer_jar.name }}/{{ zarrpixelbuffer_jar.version }}/{{ zarrpixelbuffer_jar.name }}-{{ zarrpixelbuffer_jar.version }}.jar"
+    dest: "{{ omero_zarr_pixel_buffer_folder }}/{{ zarrpixelbuffer_jar.name }}.jar"
     force: true
-  with_items: "{{ zarrpixelbuffer_jar }}"
 
 - name: omero-zarr-pixel-buffer |Install dependency jars
   become: true
@@ -14,12 +13,3 @@
     dest: "{{ omero_zarr_pixel_buffer_folder }}/{{ item.name }}.jar"
     force: true
   with_items: "{{ zarrpixelbuffer_dep_jars }}"
-
-- name: omero-zarr-pixel-buffer | chown to omero-zarr-pixel-buffer-user
-  become: true
-  ansible.builtin.file:
-    path: "{{ omero_zarr_pixel_buffer_folder }}"
-    owner: "{{ omero_zarr_pixel_buffer_user }}"
-    group: "{{ omero_zarr_pixel_buffer_user }}"
-    state: directory
-    recurse: true
